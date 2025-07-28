@@ -60,7 +60,7 @@
     "turndown": "^7.0.0"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "4.45.1"
+    "@rollup/rollup-linux-x64-gnu": "4.46.1"
   },
   "volta": {
     "node": "22.17.1"
