@@ -245,6 +245,21 @@ describe('Tables Plugin', () => {
       expect(result).not.toContain('<table')
     })
 
+    it('should handle tables with lists inside cells from HTML file', () => {
+      const htmlPath = join(process.cwd(), 'test', 'list-in-cell-table.html')
+      const html = readFileSync(htmlPath, 'utf8')
+
+      // Force dash bullets to reproduce the original bug
+      turndownService.options.bulletListMarker = '-'
+
+      const result = turndownService.turndown(html)
+
+      expect(result).toContain('Table with List in Cell Test')
+      expect(result).toMatch(/^\|\s*---\s*\|\s*---\s*\|$/m)
+      expect(result).toMatch(/\|\s*- Item one - Item two\s*\|/)
+      expect(result).not.toContain('<table')
+    })
+
     it('should handle special characters from HTML file', () => {
       const htmlPath = join(process.cwd(), 'test', 'special-characters-table.html')
       const html = readFileSync(htmlPath, 'utf8')

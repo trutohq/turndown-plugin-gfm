@@ -55,6 +55,20 @@ function cell(content, node, index) {
   return result
 }
 
+// Check if a line is a valid GFM table separator row
+function isSeparatorRow(line) {
+  // Trim and require it to start and end with a pipe
+  const s = (line || '').trim()
+  if (!s.startsWith('|') || !s.endsWith('|')) return false
+
+  // Each cell must be only dashes, optionally wrapped with colons, with optional spaces
+  // e.g., '---', ':---', '---:', ':---:' (minimum 3 dashes per GFM)
+  const cells = s.split('|').slice(1, -1) // inner cells
+  if (cells.length === 0) return false
+
+  return cells.every(c => /^ *:?-{3,}:? *$/.test(c))
+}
+
 // Check if this is a heading row (enhanced for edge cases)
 function isHeadingRow(tr) {
   if (!tr || !tr.parentNode) return false
@@ -194,7 +208,7 @@ rules.table = {
     if (lines.length === 0) return ''
     
     // Check if we need to add a header row
-    const hasHeaderSeparator = lines.length >= 2 && /\|\s*-+/.test(lines[1])
+    const hasHeaderSeparator = lines.length >= 2 && isSeparatorRow(lines[1])
     
     let result = lines.join('\n')
     
