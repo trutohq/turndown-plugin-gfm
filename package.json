@@ -63,6 +63,9 @@
     "@rollup/rollup-linux-x64-gnu": "4.59.1"
   },
   "resolutions": {
+    "brace-expansion": "5.0.8",
+    "js-yaml": "4.3.0",
+    "postcss": "8.5.18",
     "picomatch": "4.0.4",
     "flatted": "3.4.2",
     "minimatch": "9.0.7",
