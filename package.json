@@ -1,7 +1,7 @@
 {
   "name": "@truto/turndown-plugin-gfm",
   "description": "Enhanced Turndown plugin for GitHub Flavored Markdown with improved table conversion and performance.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "author": "Truto <eng@truto.one>",
   "main": "./lib/index.js",
