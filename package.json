@@ -1,7 +1,7 @@
 {
   "name": "@truto/turndown-plugin-gfm",
   "description": "Enhanced Turndown plugin for GitHub Flavored Markdown with improved table conversion and performance.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "author": "Truto <eng@truto.one>",
   "main": "./lib/index.js",
@@ -49,12 +49,12 @@
   },
   "devDependencies": {
     "@types/turndown": "5.0.5",
-    "@vitest/coverage-v8": "4.1.0",
+    "@vitest/coverage-v8": "4.1.11",
     "eslint": "9.31.0",
     "turndown": "7.2.0",
     "typescript": "5.8.3",
     "vite": "7.3.5",
-    "vitest": "4.1.0"
+    "vitest": "4.1.11"
   },
   "peerDependencies": {
     "turndown": "^7.0.0"
@@ -80,7 +80,8 @@
     "flatted": "3.4.2",
     "minimatch": "9.0.7",
     "rollup": "4.61.0",
-    "esbuild": "0.28.1"
+    "esbuild": "0.28.1",
+    "vite": "7.3.5"
   },
   "volta": {
     "node": "22.17.1"
