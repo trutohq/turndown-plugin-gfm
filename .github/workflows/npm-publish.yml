@@ -11,15 +11,18 @@ on:
 jobs:
   publish-npm:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22.17.1
           registry-url: https://registry.npmjs.org/
+      - name: Update npm (trusted publishing needs npm 11.5.1+)
+        run: npm install -g npm@latest
       - run: npm install
       - run: npm run build
       - run: npm run test:run
       - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
