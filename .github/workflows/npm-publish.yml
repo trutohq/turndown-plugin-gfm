@@ -20,8 +20,10 @@ jobs:
         with:
           node-version: 22.17.1
           registry-url: https://registry.npmjs.org/
+      # npm 11, not latest: npm 12 needs Node 22.22.2+, so on this job's 22.17.1
+      # `npm install -g npm@latest` stops with EBADENGINE.
       - name: Update npm (trusted publishing needs npm 11.5.1+)
-        run: npm install -g npm@latest
+        run: npm install -g npm@11
       - run: npm install
       - run: npm run build
       - run: npm run test:run
